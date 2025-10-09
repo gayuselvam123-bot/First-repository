@@ -1,0 +1,759 @@
+package project;
+
+import java.awt.Desktop.Action;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Duration;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.idealized.Javascript;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import net.bytebuddy.implementation.bind.annotation.BindingPriority;
+
+public class Guru99Login {
+	public static WebDriver wd;
+
+	
+    By email=By.name("emailid");
+	By sub=By.name("btnLogin");
+	//================================//
+	By seleni=By.xpath("//a[contains(text(),'Selenium')]");//contains dynamaic element
+	
+	By rc=By.xpath("//a[@href='../../test/radio.html']");
+	By radio1=By.id("vfb-7-2");
+	By check1=By.id("vfb-6-0");
+	By check3=By.id("vfb-6-2");
+	
+	By al=By.xpath("//a[@href='../../test/link.html']");
+	By link1=By.xpath("//a[@href='http://www.google.com']");
+	By link2=By.xpath("//a[@href='http://www.fb.com']");
+	
+	By ajax=By.xpath("//a[@href='../../test/ajax.html']");
+	By radio2=By.id("yes");
+	By checkbut=By.id("buttoncheck");
+	By resetbut=By.xpath("//input[@type='reset']");
+	
+	By delete=By.xpath("//a[@href='../../test/delete_customer.php']");
+	
+	By delid=By.name("cusid");
+	By submit=By.name("submit");
+	
+	
+	By login=By.xpath("//a[@href='../../test/login.html']");
+	By email1=By.id("email");
+	By psw=By.id("passwd");
+	By signin=By.id("SubmitLogin");
+	
+	
+	By demo=By.xpath("//a[@href='../../test/guru99home/']");
+	By test=By.xpath("//a[@href='https://www.guru99.com/software-testing.html']");
+	By sap=By.xpath("//a[@href='https://www.guru99.com/sap-training-hub.html']");
+	By web=By.xpath("//a[@href='https://www.guru99.com/php-tutorials.html']");
+	By fun=By.xpath("//a[@href='https://www.guru99.com/accounting.html']");
+	By execute=By.xpath("//a[@href='https://www.guru99.com/try-java-editor.html']");
+	By e1=By.id("philadelphia-field-email");
+	By sub1=By.id("philadelphia-field-submit");
+	By dd=By.id("awf_field-91977689");
+	
+	
+	By dad=By.xpath("//a[@href='../drag_drop.html']");
+	By bank=By.id("credit2");
+	By dragbank=By.id("bank");
+	By amount=By.id("fourth");
+	By dragamount=By.id("amt7");
+	By sale=By.id("credit1");
+	By dragsale=By.id("loan");
+	By saleamount=By.id("fourth");
+	By dragsaleamount=By.id("amt8");
+	
+	
+	
+	
+	//=========================================================================//
+	By insu=By.xpath("//a[@href='http://demo.guru99.com/insurance/v1/index.php']");
+	By reg=By.xpath("//a[@href='register.php']");
+	By mrs=By.id("user_title");
+	By fn=By.id("user_firstname");
+	By sn=By.id("user_surname");
+	By phone=By.id("user_phone");
+	By year=By.name("year");
+	By month=By.id("user_dateofbirth_2i");
+	By date=By.id("user_dateofbirth_3i");
+	By full=By.id("licencetype_t");
+	By lp=By.id("user_licenceperiod");
+	By add=By.id("user_occupation_id");
+	By street=By.id("user_address_attributes_street");
+	By city=By.id("user_address_attributes_city");
+	By country=By.id("user_address_attributes_county");
+	By postalcard=By.id("user_address_attributes_postcode");
+	By email3=By.id("user_user_detail_attributes_email");
+	By password=By.id("user_user_detail_attributes_password");
+	By cpassword=By.id("user_user_detail_attributes_password_confirmation");
+	By change=By.name("submit");
+	By email4=By.id("email");
+	By passs=By.id("password");
+	By loginn=By.name("submit");
+	//================================================================================//
+	By agile=By.xpath("//a[@href='http://demo.guru99.com/Agile_Project/Agi_V1/']");
+	By agileid=By.name("uid");
+	By agilepsw=By.name("password");
+	By alogin=By.name("btnLogin");
+	By mini=By.xpath("//a[@href='MiniStatementInput.php']");
+	By accountno=By.name("accountno");
+	By sub3=By.name("AccSubmit");
+	By reset=By.name("res");
+	By logout=By.xpath("//a[@href='Logout.php']");
+//================================================================================================//
+	By bankpro=By.xpath("//a[@href='http://demo.guru99.com/V1/index.php']");
+	By bankid1=By.name("uid");
+	By bankpsw1=By.name("password");
+	By banklogin=By.name("btnLogin");
+	//new customer
+	By newcus=By.xpath("//a[@href='addcustomerpage.php']");
+	By cname=By.name("name");
+	By cgender=By.name("rad1");
+	By cdate=By.name("dob");
+	By cadd=By.name("addr");
+	By ccity=By.name("city");
+	By cstate=By.name("state");
+	By cpin=By.name("pinno");
+	By cphone=By.name("telephoneno");
+	By cemail=By.name("emailid");
+	By sub4=By.name("sub");
+	By r1=By.name("res");
+	//edit customer
+	By editcus=By.xpath("//a[@href='EditCustomer.php']");
+	By ecid=By.name("cusid");
+	By ecsub=By.name("AccSubmit");
+	By ecres=By.name("res");
+	//delete 
+	By delcus=By.xpath("//a[@href='DeleteCustomerInput.php']");
+	By delcusid=By.name("cusid");
+	By delsubmit=By.name("AccSubmit");
+	By delreset=By.name("res");
+	//edit account
+	By newaccount=By.xpath("//a[@href='editAccount.php']");
+	By editid=By.name("accountno");
+	By editsubmit=By.name("AccSubmit");
+	By editreset=By.name("res");
+	
+	//logout
+	By logoutt=By.xpath("//a[@href='Logout.php']");
+//=====================================================================//
+	By telecom=By.xpath("//a[@href='http://demo.guru99.com/telecom/index.html']");
+	By addcust=By.xpath("//a[@href='addcustomer.php']");
+	By radiotele=By.id("pending");
+	By telefname=By.id("fname");
+	By tlast=By.id("lname");
+	By temail=By.id("email");
+	By taddress=By.name("addr");
+	By tphone=By.id("telephoneno");
+	By tsubmit=By.name("submit");
+	By tb=By.xpath("//a[@href='index.html']");
+	By trafficplan=By.xpath("//a[@href='addtariffplans.php']");
+	By trental1=By.id("rental1");
+	By tlocal_minutes=By.id("local_minutes");
+	By tinter_minutes=By.id("inter_minutes");
+	By tsms_pack=By.name("sms_pack");
+	By tminutes_charges=By.id("minutes_charges");
+	By tinter_charges=By.id("inter_charges");
+	By tsms_charges=By.id("sms_charges");
+	By tsubmit1=By.name("submit");
+	By tb1=By.xpath("//a[@href='index.html']");
+	By tpc=By.xpath("//a[@href='assigntariffplantocustomer.php']");
+	By uniqe=By.id("customer_id");
+	By tsubmit2=By.name("submit");
+	By tmenu=By.xpath("//a[@href='#menu']");
+	By tbill=By.xpath("//a[@href='billing.php']");
+	//By id123=By.xpath("//input[@placeholder='Enter Your Customer ID']");
+	By tsubmit3=By.name("submit");
+	//=====================================//
+	By payment1=By.xpath("//a[@href='http://demo.guru99.com/payment-gateway/index.php']");
+	By quantity=By.name("quantity");
+	By buyy=By.xpath("//input[@type='submit']");
+	By card=By.id("card_nmuber");
+	By pmonth=By.id("month");
+	By pyear=By.id("year");
+	By cvv=By.id("cvv_code");
+	By psubmit=By.name("submit");
+	
+ public void setEmail(String input) throws InterruptedException
+	{
+	 wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+	  
+		WebElement we=wd.findElement(email);
+		we.sendKeys(input);
+		System.out.println("Entered email is is:"+we.getAttribute("value"));//use getattribute 
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");
+		wd.findElement(sub).click();
+//		Thread.sleep(2000);
+	}
+	
+	public void radioAndChechbox() throws InterruptedException
+	{
+		wd.findElement(seleni).click();
+		Thread.sleep(2000);
+		wd.findElement(rc).click();//radio button
+		wd.findElement(radio1).click();
+		Thread.sleep(2000);
+		wd.findElement(check1).click();
+		wd.findElement(check3).click();//checkbox
+		wd.navigate().back();
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");
+		
+	}
+
+	public void acessingLink() throws InterruptedException//handling link
+	{
+		Thread.sleep(2000);
+		wd.findElement(seleni).click();
+		Thread.sleep(2000);
+		wd.findElement(al).click();
+		Thread.sleep(2000);
+		wd.findElement(link1).click();
+		wd.navigate().back();
+		wd.findElement(link2).click();
+		wd.navigate().back();
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");
+	}
+	public void ajax() throws InterruptedException//yes or no (msg)
+	{
+		Thread.sleep(2000);
+		wd.findElement(seleni).click();
+		Thread.sleep(2000);
+		wd.findElement(ajax).click();
+		Thread.sleep(1000);
+		wd.findElement(radio2).click();
+		Thread.sleep(1000);
+		WebElement we19=wd.findElement(checkbut);
+		we19.click();
+		System.out.println("Title is:"+we19.getText());
+		Thread.sleep(1000);
+		wd.findElement(resetbut).click();
+		Thread.sleep(1000);
+
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");}
+	
+	public void login(String ee,String pp) throws InterruptedException//login
+
+	{
+		Thread.sleep(1000);
+		wd.findElement(seleni).click();
+		Thread.sleep(1000);
+		wd.findElement(login).click();
+		Thread.sleep(1000);
+		WebElement we2=wd.findElement(email1);
+		we2.sendKeys(ee);
+		Thread.sleep(1000);
+		System.out.println("Entered email is :"+we2.getAttribute("value"));//use getattribute 
+		WebElement we3=wd.findElement(psw);
+		we3.sendKeys(pp);
+		Thread.sleep(1000);
+		System.out.println("Entered password is :"+we3.getAttribute("value"));
+		wd.findElement(signin).click();
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		Thread.sleep(1000);
+		
+		System.out.println("============================================================");
+	}
+	public void deleteRecord(String num) throws InterruptedException//alert (pop up msg)
+	{
+		Thread.sleep(1000);
+		wd.findElement(seleni).click();
+		Thread.sleep(1000);
+		wd.findElement(delete).click();
+		Thread.sleep(2000);
+		WebElement we1=wd.findElement(delid);
+		we1.sendKeys(num);
+		System.out.println("Deleted cutomer id is:"+(we1.getAttribute("value")));
+		Thread.sleep(1000);
+		wd.findElement(submit).click();
+		Thread.sleep(2000);
+		Alert alert=wd.switchTo().alert();
+		System.out.println("Alert first message:"+alert.getText());
+		alert.accept();
+		Thread.sleep(2000);
+		System.out.println("Alert second message:"+alert.getText());
+		alert.accept();
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");
+	
+		
+		
+	}
+	
+	public void demoPage(String email1,String num1) throws InterruptedException//dropdown list,mouse,alert,using select print dd list
+	{
+//		Thread.sleep(2000);
+		wd.findElement(seleni).click();
+		wd.findElement(demo).click();
+		Actions acc=new Actions(wd);
+	    WebElement we4=wd.findElement(test);
+		acc.moveToElement(we4).build().perform();
+		System.out.println("dropdown list name:"+we4.getText());
+		Thread.sleep(1000);
+		WebElement we5=wd.findElement(sap);
+		acc.moveToElement(we5).build().perform();
+		System.out.println("dropdown list name:"+we5.getText());
+		Thread.sleep(1000);
+		WebElement we6=wd.findElement(web);
+		acc.moveToElement(we6).build().perform();
+		System.out.println("dropdown list name:"+we6.getText());
+		Thread.sleep(1000);
+		WebElement we7=wd.findElement(fun);
+		acc.moveToElement(we7).build().perform();
+		System.out.println("dropdown list name:"+we7.getText());
+		Thread.sleep(1000);
+		WebElement we8=wd.findElement(execute);
+		acc.moveToElement(we8).build().perform();
+		System.out.println("dropdown list name:"+we8.getText());
+		Thread.sleep(1000);
+		JavascriptExecutor js = (JavascriptExecutor)wd;
+		js.executeScript("window.scrollBy(0,2350)");
+		Thread.sleep(1000);
+		WebElement we9=wd.findElement(e1);
+	    we9.sendKeys(email1);
+	    System.out.println("Email value is:"+we9.getAttribute("value"));
+	    Thread.sleep(2000);
+	    wd.findElement(sub1).click();
+	    Alert alert=wd.switchTo().alert();
+		System.out.println("Alert  message:"+alert.getText());
+		alert.accept();
+		WebElement we10 = wd.findElement(dd);
+	    Select s = new Select(we10);
+	    s.selectByVisibleText(num1);
+	    System.out.println("Course name is:"+we10.getAttribute("value"));
+	    System.out.println("The available course is :"+we10.getText());
+	    System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+//		wd.navigate().back();
+		System.out.println("============================================================");
+		
+		
+		
+	}
+	public void dragAndDrop() throws InterruptedException//drag and drop
+	{
+		Thread.sleep(2000);
+		wd.findElement(seleni).click();
+		Thread.sleep(2000);
+		wd.findElement(dad).click();
+		JavascriptExecutor js = (JavascriptExecutor)wd;
+		js.executeScript("window.scrollBy(0,250)");
+		Thread.sleep(2000);
+		WebElement we11=wd.findElement(bank);
+	    WebElement we12=wd.findElement(dragbank);
+		Actions a=new Actions(wd);
+		a.dragAndDrop(we11, we12).build().perform();
+		Thread.sleep(2000);
+		WebElement we13=wd.findElement(amount);
+	    WebElement we14=wd.findElement(dragamount);
+		Actions a1=new Actions(wd);
+		a1.dragAndDrop(we13, we14).build().perform();
+		Thread.sleep(2000);
+		WebElement we15=wd.findElement(sale);
+	    WebElement we16=wd.findElement(dragsale);
+		Actions a2=new Actions(wd);
+		a2.dragAndDrop(we15, we16).build().perform();
+		Thread.sleep(2000);
+		WebElement we17=wd.findElement(saleamount);
+	    WebElement we18=wd.findElement(dragsaleamount);
+		Actions a3=new Actions(wd);
+		a3.dragAndDrop(we17, we18).build().perform();
+		Thread.sleep(2000);
+		wd.navigate().back();
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");
+		
+		
+		
+	}
+	//===================================================================================================
+	public void insuranceProject(String name,String fname,String sname,String phn,String yearr,String monthh,String datee,String lperiod,String addr,String st,String ci,String co,String po,String em,String pa,String cp,String em1,String psw) throws InterruptedException
+	{
+//		Thread.sleep(3000);
+//	wd.findElement(seleni).click();
+	Thread.sleep(1000);
+	wd.findElement(insu).click();
+	wd.findElement(reg).click();
+	WebElement we20=wd.findElement(mrs);
+	Select s=new Select(we20);
+	s.selectByVisibleText(name);
+	System.out.println("Title is :"+we20.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we21=wd.findElement(fn);
+	we21.sendKeys(fname);
+	System.out.println("First Name is :"+we21.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we22=wd.findElement(sn);
+	we22.sendKeys(sname);
+	System.out.println("SurName is :"+we22.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we23=wd.findElement(phone);
+	we23.sendKeys(phn);
+	System.out.println("Phonenumber  is :"+we23.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we24=wd.findElement(year);
+	Select s1=new Select(we24);
+	s1.selectByValue(yearr);
+	System.out.println("year is :"+we24.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we25=wd.findElement(month);
+	Select s2=new Select(we25);
+	s2.selectByVisibleText(monthh);
+	System.out.println("month is :"+we25.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we26=wd.findElement(date);
+	Select s3=new Select(we26);
+	s3.selectByValue(datee);
+	System.out.println("date is :"+we26.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we27=wd.findElement(full);
+	we27.click();
+	System.out.println("date is :"+we27.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we28=wd.findElement(lp);
+	Select s4=new Select(we28);
+	s4.selectByValue(lperiod);
+	System.out.println("License period is :"+we28.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we29=wd.findElement(add);
+	Select s5=new Select(we29);
+	s5.selectByVisibleText(addr);
+	System.out.println("occupation :"+we29.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we30=wd.findElement(street);
+	we30.sendKeys(st);
+	System.out.println("Address :"+we30.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we31=wd.findElement(city);
+	we31.sendKeys(ci);
+	System.out.println("City :"+we31.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we32=wd.findElement(country);
+	we32.sendKeys(co);
+	System.out.println("country :"+we32.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we33=wd.findElement(postalcard);
+	we33.sendKeys(po);
+	System.out.println("Postal card :"+we33.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we34=wd.findElement(email3);
+	we34.sendKeys(em);
+	System.out.println("Email :"+we34.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we35=wd.findElement(password);
+	we35.sendKeys(pa);
+	System.out.println("Password :"+we35.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we36=wd.findElement(cpassword);
+	we36.sendKeys(cp);
+	System.out.println("Confirm Password :"+we36.getAttribute("value"));
+	Thread.sleep(1000);
+	wd.findElement(change).click();
+	//System.out.println("=========================");
+	WebElement we37=wd.findElement(email4);
+	we37.sendKeys(em1);
+	System.out.println("Email :"+we37.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we38=wd.findElement(passs);
+	we38.sendKeys(psw);
+	System.out.println("Confirm Password :"+we38.getAttribute("value"));
+	Thread.sleep(1000);
+	WebElement we39=wd.findElement(loginn);
+	we39.click();
+	Thread.sleep(1000);
+    System.out.println("Title is:"+wd.getTitle());
+	System.out.println("url of the page is:"+wd.getCurrentUrl());
+	System.out.println("============================================================");
+	}
+//======================================================================================================//
+	public void agileproject(String aid,String apsw,String ano) throws InterruptedException
+	{
+		wd.findElement(agile).click();
+		WebElement we1=wd.findElement(agileid);
+		we1.sendKeys(aid);
+		System.out.println("Agile project id is :"+we1.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we2=wd.findElement(agilepsw);
+		we2.sendKeys(apsw);
+		System.out.println("Agile project password is :"+we2.getAttribute("value"));
+		Thread.sleep(2000);
+		wd.findElement(alogin).click();
+		Thread.sleep(8000);
+     	wd.findElement(mini).click();
+		WebElement we3=wd.findElement(accountno);
+		Select s = new Select(we3);
+		s.selectByVisibleText(ano);
+		Thread.sleep(2000);
+		wd.findElement(sub3).click();
+		Thread.sleep(2000);
+		wd.navigate().back();
+		wd.findElement(reset).click();
+		Thread.sleep(2000);
+		wd.findElement(logout).click();
+		Alert alert=wd.switchTo().alert();
+		System.out.println("Alert  message:"+alert.getText());
+		alert.accept();
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");
+		}
+		public void BankProject(String bid,String bpsw,String cn,String cd,String ca,String cc,String cs,String cpi,String cp,String ce,String eid,String dcid) throws InterruptedException
+		{
+			wd.findElement(bankpro).click();
+			WebElement we1=wd.findElement(bankid1);
+			we1.sendKeys(bid);
+			System.out.println("Bank project id is :"+we1.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we2=wd.findElement(bankpsw1);
+			we2.sendKeys(bpsw);
+			System.out.println("Bank project passwordis :"+we2.getAttribute("value"));
+			Thread.sleep(2000);
+			wd.findElement(banklogin).click();
+				//new customer			
+		    Thread.sleep(2000);
+			wd.findElement(newcus).click();
+			WebElement we3=wd.findElement(cname);
+			we3.sendKeys(cn);
+			System.out.println("Bank name is :"+we3.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we4=wd.findElement(cgender);
+			we4.click();
+			System.out.println("Bank gender is :"+we4.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we5=wd.findElement(cdate);
+			we5.sendKeys(cd);
+			System.out.println("Bank date is :"+we5.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we6=wd.findElement(cadd);
+			we6.sendKeys(ca);
+			System.out.println("Bank Address is :"+we6.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we7=wd.findElement(ccity);
+			we7.sendKeys(cc);
+			System.out.println("Bank city is :"+we7.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we8=wd.findElement(cstate);
+			we8.sendKeys(cs);
+			System.out.println("Bank state is :"+we8.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we9=wd.findElement(cpin);
+			we9.sendKeys(cpi);
+			System.out.println("Bank pin is :"+we9.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we10=wd.findElement(cphone);
+			we10.sendKeys(cp);
+			System.out.println("Bank phone is :"+we10.getAttribute("value"));
+			Thread.sleep(2000);
+			WebElement we11=wd.findElement(cemail);
+			we11.sendKeys(ce);
+			System.out.println("Bank email is :"+we11.getAttribute("value"));
+			wd.findElement(sub4).click();
+			wd.navigate().back();
+			wd.findElement(r1).click();
+			wd.navigate().back();
+			//edit customer
+			wd.findElement(editcus).click();
+			Thread.sleep(2000);
+			WebElement we12=wd.findElement(ecid);
+			we12.sendKeys(eid);
+			System.out.println("Edit customer id is :"+we12.getAttribute("value"));
+			Thread.sleep(2000);
+			wd.findElement(ecsub).click();
+			Thread.sleep(2000);
+			wd.navigate().back();	
+			wd.findElement(ecres).click();
+			Thread.sleep(2000);
+			//delete id
+			wd.findElement(delcus).click();
+			Thread.sleep(2000);
+			WebElement we13=wd.findElement(delcusid);
+			we13.sendKeys(dcid);
+			System.out.println("Deleted cutomer id is:"+(we13.getAttribute("value")));
+			Thread.sleep(2000);
+			wd.findElement(delsubmit).click();
+			Thread.sleep(2000);
+			wd.navigate().back();
+			wd.findElement(delreset).click();
+		
+		
+			//logout
+			wd.findElement(logoutt).click();
+			Thread.sleep(2000);
+			Alert alert=wd.switchTo().alert();
+			System.out.println("Alert  message:"+alert.getText());
+			alert.accept();
+			wd.navigate().back();
+			System.out.println("Title is:"+wd.getTitle());
+			System.out.println("url of the page is:"+wd.getCurrentUrl());
+			System.out.println("============================================================");
+			
+			
+		}
+//		/======================================================================================///
+	
+	public void telecomProject(String sid,String tln,String te,String ta,String tp,String tpr,String tpl,String tpi,String tps,String tpt,String tpti,String tpts,String tcid) throws InterruptedException
+	{
+		wd.findElement(telecom).click();
+		Thread.sleep(2000);
+		wd.findElement(addcust).click();
+		//wd.findElement(radiotele).click();
+		WebElement we1=wd.findElement(telefname);
+		we1.sendKeys(sid);
+		System.out.println("Add customer fname is :"+we1.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we2=	wd.findElement(tlast);
+		we2.sendKeys(tln);
+		System.out.println("Add customer lname is :"+we2.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we3=wd.findElement(temail);
+		we3.sendKeys(te);	
+		System.out.println("Add customer email is :"+we3.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we4=wd.findElement(taddress);
+		we4.sendKeys(ta);
+		System.out.println("Add customer address is :"+we4.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we5=wd.findElement(tphone);
+		we5.sendKeys(tp);
+		System.out.println("Add customer phone number is :"+we5.getAttribute("value"));
+		Thread.sleep(2000);
+		wd.findElement(tsubmit).click();
+		wd.findElement(tb).click();
+		Thread.sleep(2000);
+		//traffic plan
+		wd.findElement(trafficplan).click();
+		WebElement we6=wd.findElement(trental1);
+		we6.sendKeys(tpr);
+		System.out.println("traffic plan money rental is :"+we6.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we7=wd.findElement(tlocal_minutes);
+		we7.sendKeys(tpl);
+		System.out.println("traffic plan free local min is :"+we7.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we8=wd.findElement(tinter_minutes);
+		we8.sendKeys(tpi);	
+		System.out.println("traffic plan free international min is :"+we8.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we9=wd.findElement(tsms_pack);
+		we9.sendKeys(tps);
+		System.out.println("traffic plan free sms is :"+we9.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we10=wd.findElement(tminutes_charges);
+		we10.sendKeys(tpt);
+		System.out.println("traffic plan local charge is :"+we10.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we11=wd.findElement(tinter_charges);
+		we11.sendKeys(tpti);
+		System.out.println("traffic plan free international charge is :"+we11.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we12=wd.findElement(tsms_charges);
+		we12.sendKeys(tpts);	
+		System.out.println("traffic plan sms charge is :"+we12.getAttribute("value"));
+		Thread.sleep(2000);
+		wd.findElement(tsubmit1).click();
+		wd.findElement(tb1).click();
+		Thread.sleep(2000);
+		//traffic plan to customer
+		wd.findElement(tpc).click();
+		WebElement we13=wd.findElement(uniqe);
+		we13.sendKeys(tcid);
+		System.out.println("traffic plan customer id is :"+we13.getAttribute("value"));
+		Thread.sleep(2000);
+		wd.findElement(tsubmit2).click();
+		//wd.findElement(By.xpath("//a[@href='assigntariffplantocustomer.php']")).click();
+		//wd.findElement(tmenu).click();
+		//wd.findElement(tbill).click();
+		//WebElement we14=wd.findElement(id123);
+		//we14.sendKeys(bid);
+		//System.out.println(" plan customer id is :"+we14.getAttribute("value"));
+//        wd.findElement(tsubmit3).click();
+//        Alert alert=wd.switchTo().alert();
+//		System.out.println("Alert  message:"+alert.getText());
+//		alert.accept();
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");
+        
+}
+	public void payment(String pq,String pc,String pm,String py,String pcvv) throws InterruptedException, IOException
+	{
+		wd.findElement(payment1).click();
+		WebElement we1=wd.findElement(quantity);
+		Select s= new Select(we1);
+		s.selectByValue(pq);
+		System.out.println(" quantity is :"+we1.getAttribute("value"));
+		Thread.sleep(8000);
+//		WebDriverWait w=new WebDriverWait(wd,Duration.ofSeconds(10));
+//		  WebElement ee=wd.findElement(buyy);
+//		  ee=w.until(ExpectedConditions.visibilityOf(ee));
+//		  ee.click();
+		wd.findElement(buyy).click();
+		Thread.sleep(2000);//
+		WebElement we2=wd.findElement(card);
+		we2.sendKeys(pc);
+		System.out.println(" payment card details id is :"+we2.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we3=wd.findElement(pmonth);
+		Select s1= new Select(we3);
+		s1.selectByValue(pm);
+		System.out.println(" payment month details id is :"+we3.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we4=wd.findElement(pyear);
+		Select s2= new Select(we4);
+		s2.selectByValue(py);
+		System.out.println(" payment year details id is :"+we4.getAttribute("value"));
+		Thread.sleep(2000);
+		WebElement we5=wd.findElement(cvv);
+		we5.sendKeys(pcvv);
+		System.out.println(" payment cvv details id is :"+we5.getAttribute("value"));
+		Thread.sleep(2000);
+		wd.findElement(psubmit).click();
+		System.out.println("Title is:"+wd.getTitle());
+		System.out.println("url of the page is:"+wd.getCurrentUrl());
+		System.out.println("============================================================");
+	 File f1 = ((TakesScreenshot)wd).getScreenshotAs(OutputType.FILE);
+	 File df=new File("D:\\\\Analytiq Learning\\\\screeenshot\\\\image332.jpg");
+	 Files.copy(f1.toPath(),df.toPath());
+
+
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public Guru99Login(WebDriver wd)
+	{
+		this.wd=wd;
+	}
+
+}
